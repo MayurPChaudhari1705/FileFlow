@@ -21,7 +21,7 @@ const Sidebar = ({ name ,  email } : { name : string , email : string }) => {
               <Link key={name} href={url} className='lg:w-full'>
                 <li className={cn("sidebar-nav-item" , pathName === url && 'shad-active')}>
                   <Image src={icon} alt='logo' width={24} height={24} className={cn("nav-icon" , pathName === url && 'nav-icon-active')} />
-                  <p>{name} </p>
+                  <p className='hidden lg:block'>{name} </p>
                 </li>
               </Link>
             ))}

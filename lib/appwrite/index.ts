@@ -12,10 +12,8 @@ export const createSessionClient = async () => {
     const session =  (await cookies()).get("appwrite-session");
 
     if(!session || !session.value) redirect('sign-in');
-    console.log("session value: " , session.value);
 
     client.setSession(session.value);
-
     return {
         get account () {
             return new Account(client);
