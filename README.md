@@ -28,7 +28,7 @@ FileFlow is a modern web application for file management and user authentication
 ### Installation
 
 1. **Clone the repository:**
-   git clone https://github.com/your-username/fileflow.git
+   git clone https://github.com/MayurPChaudhari1705/FileFlow.git
    cd fileflow
 
 2. Install dependencies:
