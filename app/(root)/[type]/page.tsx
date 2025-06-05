@@ -1,12 +1,17 @@
 import Card from '@/components/Card';
 import Sort from '@/components/Sort';
 import { getFiles } from '@/lib/actions/file.actions';
+import { getFileTypesParams } from '@/lib/utils';
 import { Models } from 'node-appwrite';
 import React from 'react'
 
-const page = async ({ params } : SearchParamProps) => {
+const page = async ({ searchParams , params } : SearchParamProps) => {
     const type = (await params).type as string;
-    const files = await getFiles();
+    const types = getFileTypesParams(type) as FileType[];
+    const searchText = (await searchParams)?.query as string || "";
+
+    const sort = (await searchParams)?.sort as string || "";
+    const files = await getFiles({ types , searchText , sort });
   return (
     <div className='page-container'>
         <section className='w-full'>
@@ -27,7 +32,7 @@ const page = async ({ params } : SearchParamProps) => {
             
         </section>
         { files.total > 0 ? (
-            <section>
+            <section className='file-list'>
                 {files.documents.map((file : Models.Document) => (
                    <Card key={file.$id} file={file} />
                 ))}
